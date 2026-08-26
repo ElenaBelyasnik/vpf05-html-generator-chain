@@ -1,0 +1,34 @@
+{
+  "html_elements": [
+    "header",
+    "nav",
+    "main",
+    "section",
+    "h1",
+    "h2",
+    "p",
+    "ul",
+    "li",
+    "article",
+    "a",
+    "button",
+    "address",
+    "footer"
+  ],
+  "css_features": [
+    "flexbox",
+    "css-grid",
+    "responsive-design",
+    "border-radius",
+    "box-shadow",
+    "gradient",
+    "spacing",
+    "hover-effects",
+    "color-variables"
+  ],
+  "fonts": [
+    "Inter, sans-serif",
+    "Nunito Sans, sans-serif"
+  ],
+  "layout": "одноколоночный с адаптивными карточками услуг"
+}
