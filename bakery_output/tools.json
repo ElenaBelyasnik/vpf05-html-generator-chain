@@ -1,0 +1,33 @@
+{
+  "html_elements": [
+    "header",
+    "nav",
+    "main",
+    "section",
+    "h1",
+    "h2",
+    "p",
+    "ul",
+    "li",
+    "article",
+    "a",
+    "address",
+    "footer"
+  ],
+  "css_features": [
+    "flexbox",
+    "grid",
+    "background-color",
+    "color",
+    "border-radius",
+    "box-shadow",
+    "padding",
+    "margin",
+    "responsive-design"
+  ],
+  "fonts": [
+    "Georgia, serif",
+    "Arial, sans-serif"
+  ],
+  "layout": "одноколоночный"
+}

@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Мы варим кофе с любовью и подаём с улыбкой. Тёплая и уютная кофейня с ароматными напитками и домашней выпечкой.">
+  <title>Аромат — твоя утренняя радость</title>
+  <style>
+    :root {
+      --coffee: #8B5E3C;
+      --cream: #FFF4E0;
+      --chocolate: #3B2416;
+      --amber: #D98B2B;
+      --milk: #FFFAF2;
+      --muted: #765B49;
+      --shadow: 0 14px 35px rgba(59, 36, 22, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--chocolate);
+      background:
+        radial-gradient(circle at 90% 5%, rgba(217, 139, 43, 0.14), transparent 22rem),
+        linear-gradient(180deg, var(--cream) 0%, var(--milk) 52%, #F4E2C7 100%);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.25s ease, transform 0.25s ease;
+    }
+
+    a:hover {
+      color: var(--coffee);
+    }
+
+    a:focus-visible,
+    .button:focus-visible {
+      outline: 3px solid var(--amber);
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 22px 0;
+      border-bottom: 1px solid rgba(59, 36, 22, 0.1);
+    }
+
+    .navigation {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--chocolate);
+      font-family: Georgia, serif;
+      font-size: 1.55rem;
+      font-weight: bold;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      color: var(--cream);
+      background: linear-gradient(145deg, var(--amber), var(--coffee));
+      box-shadow: 0 6px 14px rgba(139, 94, 60, 0.25);
+      font-size: 1.35rem;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.96rem;
+      font-weight: bold;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: 60px;
+      min-height: 570px;
+      padding: 72px 0;
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--coffee);
+      font-size: 0.8rem;
+      font-weight: bold;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      margin-top: 0;
+      font-family: Georgia, serif;
+      line-height: 1.12;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin-bottom: 22px;
+      font-size: clamp(2.8rem, 7vw, 5.8rem);
+      letter-spacing: -0.04em;
+    }
+
+    h1 span {
+      color: var(--coffee);
+    }
+
+    .hero-description {
+      max-width: 530px;
+      margin-bottom: 32px;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 14px 24px;
+      border-radius: 999px;
+      color: var(--cream);
+      background: linear-gradient(135deg, var(--coffee), var(--chocolate));
+      box-shadow: 0 9px 20px rgba(139, 94, 60, 0.22);
+      font-weight: bold;
+    }
+
+    .button:hover {
+      color: var(--cream);
+      transform: translateY(-3px);
+      box-shadow: 0 13px 25px rgba(139, 94, 60, 0.3);
+    }
+
+    .hero-image {
+      position: relative;
+      min-height: 430px;
+      overflow: hidden;
+      border-radius: 45% 45% 24px 24px;
+      background: var(--coffee);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-image img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      filter: sepia(12%) saturate(90%);
+    }
+
+    .hero-image::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      background: linear-gradient(180deg, transparent 50%, rgba(59, 36, 22, 0.28));
+      pointer-events: none;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 34px;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+    }
+
+    .section-heading p,
+    .contact-intro p {
+      color: var(--muted);
+    }
+
+    .drinks-grid,
+    .advantages-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 18px;
+    }
+
+    .drink-card,
+    .advantage-card,
+    .contact-card {
+      background: rgba(255, 250, 242, 0.86);
+      border: 1px solid rgba(139, 94, 60, 0.13);
+      border-radius: 18px;
+      box-shadow: 0 8px 22px rgba(59, 36, 22, 0.07);
+    }
+
+    .drink-card {
+      padding: 25px 18px;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .drink-card:hover,
+    .advantage-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .drink-icon {
+      display: grid;
+      place-items: center;
+      width: 67px;
+      height: 67px;
+      margin: 0 auto 17px;
+      border-radius: 50%;
+      color: var(--chocolate);
+      background: var(--cream);
+      font-size: 2rem;
+    }
+
+    .drink-card h3 {
+      margin: 0;
+      font-family: Georgia, serif;
+      font-size: 1.08rem;
+    }
+
+    .advantages-section {
+      background: linear-gradient(
+        135deg,
+        rgba(139, 94, 60, 0.1),
+        rgba(217, 139, 43, 0.1)
+      );
+    }
+
+    .advantages-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .advantage-card {
+      padding: 25px;
+    }
+
+    .advantage-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: Georgia, serif;
+      font-size: 1.15rem;
+    }
+
+    .advantage-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 36px;
+      align-items: stretch;
+    }
+
+    .contact-intro {
+      padding: 15px 0;
+    }
+
+    .contact-card {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      padding: 28px;
+    }
+
+    .contact-item {
+      padding-left: 18px;
+      border-left: 3px solid var(--amber);
+    }
+
+    .contact-item b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--coffee);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    address {
+      font-style: normal;
+    }
+
+    footer {
+      padding: 27px 0;
+      color: rgba(255, 244, 224, 0.9);
+      background: var(--chocolate);
+      text-align: center;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 55px 0;
+      }
+
+      .hero-image {
+        min-height: 330px;
+      }
+
+      .hero-image img {
+        min-height: 330px;
+      }
+
+      .drinks-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .advantages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .navigation {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      nav ul {
+        gap: 12px 18px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 48px 0;
+      }
+
+      .hero-image {
+        min-height: 280px;
+      }
+
+      .hero-image img {
+        min-height: 280px;
+      }
+
+      section {
+        padding: 52px 0;
+      }
+
+      .drinks-grid,
+      .advantages-grid,
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card {
+        gap: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container navigation">
+      <a class="brand" href="#top" aria-label="Аромат — на главную">
+        <span class="brand-mark" aria-hidden="true">☕</span>
+        <span>Аромат</span>
+      </a>
+
+      <nav aria-label="Основная навигация">
+        <ul>
+          <li><a href="#drinks">Напитки</a></li>
+          <li><a href="#advantages">Почему мы</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="container hero">
+      <div>
+        <p class="eyebrow">Кофейня с душой</p>
+        <h1>Аромат — <span>твоя утренняя радость</span></h1>
+        <p class="hero-description">
+          Мы варим кофе с любовью и подаём с улыбкой. Заходите согреться,
+          замедлиться и начать день с хорошего настроения.
+        </p>
+        <a class="button" href="#drinks">Выбрать напиток</a>
+      </div>
+
+      <div class="hero-image">
+        <img
+          src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&q=85"
+          alt="Чашка ароматного кофе на столе"
+        >
+      </div>
+    </section>
+
+    <section id="drinks">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Наше меню</p>
+          <h2>Любимые напитки</h2>
+          <p>
+            Каждая чашка приготовлена из свежеобжаренных зёрен и добрых ингредиентов.
+          </p>
+        </div>
+
+        <div class="drinks-grid">
+          <article class="drink-card">
+            <div class="drink-icon" aria-hidden="true">☕</div>
+            <h3>Латте</h3>
+          </article>
+
+          <article class="drink-card">
+            <div class="drink-icon" aria-hidden="true">🥛</div>
+            <h3>Капучино</h3>
+          </article>
+
+          <article class="drink-card">
+            <div class="drink-icon" aria-hidden="true">🫘</div>
+            <h3>Американо</h3>
+          </article>
+
+          <article class="drink-card">
+            <div class="drink-icon" aria-hidden="true">🍯</div>
+            <h3>Раф-кофе</h3>
+          </article>
+
+          <article class="drink-card">
+            <div class="drink-icon" aria-hidden="true">🍵</div>
+            <h3>Матча-латте</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="advantages" class="advantages-section">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">За что нас любят</p>
+          <h2>Тёплое место для своих</h2>
+        </div>
+
+        <div class="advantages-grid">
+          <article class="advantage-card">
+            <strong>Свежие зёрна</strong>
+            <p>Кофе из свежеобжаренных зёрен с насыщенным ароматом.</p>
+          </article>
+
+          <article class="advantage-card">
+            <strong>Уютная атмосфера</strong>
+            <p>Мягкий свет, приятная музыка и ощущение домашнего тепла.</p>
+          </article>
+
+          <article class="advantage-card">
+            <strong>Домашняя выпечка</strong>
+            <p>Аппетитные десерты, которые идеально дополняют чашку кофе.</p>
+          </article>
+
+          <article class="advantage-card">
+            <strong>Бесплатный Wi-Fi</strong>
+            <p>Работайте, встречайтесь и отдыхайте с комфортом.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts">
+      <div class="container contact-wrap">
+        <div class="contact-intro">
+          <p class="eyebrow">Будем рады встрече</p>
+          <h2>Загляните на чашечку</h2>
+          <p>
+            Пока мы готовим для вас кофе, можно выбрать любимый столик у окна
+            и насладиться спокойным утром.
+          </p>
+        </div>
+
+        <div class="contact-card">
+          <div class="contact-item">
+            <b>Адрес</b>
+            <address>Не указан</address>
+          </div>
+
+          <div class="contact-item">
+            <b>Телефон</b>
+            <span>Не указан</span>
+          </div>
+
+          <div class="contact-item">
+            <b>Часы работы</b>
+            <span>Не указаны</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2024 «Аромат» — кофе, который делает утро добрее</p>
+    </div>
+  </footer>
+</body>
+</html>

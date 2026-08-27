@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Пекарня с домашней атмосферой, где каждый день с душой пекут свежий хлеб и ароматные булочки.">
+  <title>Домашний хлеб — свежая выпечка с душой</title>
+  <style>
+    :root {
+      --beige: #F5E6D3;
+      --light-beige: #FFFAF4;
+      --terracotta: #C96F4A;
+      --dark-brown: #5C3D2E;
+      --muted-brown: #705444;
+      --white: #FFFFFF;
+      --shadow: 0 12px 30px rgba(92, 61, 46, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--dark-brown);
+      background:
+        radial-gradient(circle at top right, rgba(201, 111, 74, 0.12), transparent 28rem),
+        var(--light-beige);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.25s ease, transform 0.25s ease, background-color 0.25s ease;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--terracotta);
+      outline-offset: 4px;
+    }
+
+    a:hover {
+      color: var(--terracotta);
+    }
+
+    .container {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, rgba(245, 230, 211, 0.96), rgba(255, 250, 244, 0.92)),
+        var(--beige);
+      border-bottom: 1px solid rgba(92, 61, 46, 0.1);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 22px 0;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--dark-brown);
+      font-family: Georgia, serif;
+      font-size: 1.35rem;
+      font-weight: bold;
+    }
+
+    .logo-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--dark-brown);
+      color: var(--beige);
+      font-size: 1.35rem;
+      box-shadow: 0 5px 12px rgba(92, 61, 46, 0.28);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--dark-brown);
+    }
+
+    .nav-links a::after {
+      position: absolute;
+      right: 0;
+      bottom: -6px;
+      left: 0;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--terracotta);
+      content: "";
+      transform: scaleX(0);
+      transition: transform 0.25s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus-visible::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 50px;
+      min-height: 520px;
+      padding: 70px 0 85px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 15px;
+      color: var(--dark-brown);
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2 {
+      margin-top: 0;
+      font-family: Georgia, serif;
+      line-height: 1.15;
+    }
+
+    h1 {
+      max-width: 650px;
+      margin-bottom: 22px;
+      font-size: clamp(2.6rem, 6vw, 5rem);
+      font-weight: normal;
+    }
+
+    .hero-text {
+      max-width: 570px;
+      margin-bottom: 30px;
+      color: var(--muted-brown);
+      font-family: Georgia, serif;
+      font-size: 1.3rem;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 22px;
+      border-radius: 999px;
+      background: var(--dark-brown);
+      color: var(--beige);
+      font-weight: bold;
+      box-shadow: 0 7px 16px rgba(92, 61, 46, 0.25);
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      background: var(--terracotta);
+      color: var(--dark-brown);
+      transform: translateY(-2px);
+    }
+
+    .hero-art {
+      position: relative;
+      display: grid;
+      min-height: 330px;
+      place-items: center;
+    }
+
+    .bread-circle {
+      display: grid;
+      width: min(330px, 80vw);
+      height: min(330px, 80vw);
+      place-items: center;
+      border: 14px solid rgba(255, 250, 244, 0.75);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, #E8B27E, var(--terracotta) 70%);
+      box-shadow: 0 18px 40px rgba(92, 61, 46, 0.2);
+      color: var(--dark-brown);
+      font-size: 8rem;
+      transform: rotate(-8deg);
+    }
+
+    .crumb {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--terracotta);
+      opacity: 0.7;
+    }
+
+    .crumb-one {
+      top: 24px;
+      right: 10%;
+      width: 18px;
+      height: 18px;
+    }
+
+    .crumb-two {
+      bottom: 42px;
+      left: 5%;
+      width: 12px;
+      height: 12px;
+    }
+
+    .crumb-three {
+      top: 18%;
+      left: 12%;
+      width: 9px;
+      height: 9px;
+    }
+
+    section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      max-width: 650px;
+      margin-bottom: 35px;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: normal;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted-brown);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 230px;
+      padding: 24px 20px;
+      border: 1px solid rgba(92, 61, 46, 0.1);
+      border-radius: 18px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 16px 35px rgba(92, 61, 46, 0.18);
+      transform: translateY(-5px);
+    }
+
+    .product-icon {
+      display: grid;
+      width: 54px;
+      height: 54px;
+      place-items: center;
+      margin-bottom: 20px;
+      border-radius: 16px;
+      background: var(--beige);
+      font-size: 1.8rem;
+    }
+
+    .product-card h3 {
+      margin: 0 0 8px;
+      font-family: Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: normal;
+    }
+
+    .product-card p {
+      margin: auto 0 0;
+      color: var(--muted-brown);
+      font-size: 0.9rem;
+    }
+
+    .about {
+      background: var(--beige);
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .about-quote {
+      padding: 36px;
+      border-radius: 24px;
+      background: var(--terracotta);
+      color: var(--dark-brown);
+      box-shadow: var(--shadow);
+      font-family: Georgia, serif;
+      font-size: 1.8rem;
+      line-height: 1.35;
+    }
+
+    .about-text p {
+      color: var(--muted-brown);
+    }
+
+    .contact-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+      padding: 32px;
+      border-radius: 22px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    address {
+      color: var(--muted-brown);
+      font-style: normal;
+    }
+
+    address p {
+      margin: 7px 0;
+    }
+
+    address strong {
+      color: var(--dark-brown);
+    }
+
+    .contact-link {
+      display: inline-block;
+      color: var(--dark-brown);
+      font-weight: bold;
+      text-decoration: underline;
+      text-decoration-color: var(--terracotta);
+      text-underline-offset: 3px;
+    }
+
+    footer {
+      padding: 28px 0;
+      background: var(--dark-brown);
+      color: var(--beige);
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 850px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-top: 55px;
+        text-align: center;
+      }
+
+      .hero-text,
+      .section-heading {
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      .hero-art {
+        min-height: 280px;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-content {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container {
+        width: min(100% - 28px, 1080px);
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .nav-links {
+        gap: 18px;
+        font-size: 0.88rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding-bottom: 65px;
+      }
+
+      .bread-circle {
+        width: 245px;
+        height: 245px;
+        font-size: 6rem;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-card {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 25px;
+      }
+
+      .about-quote {
+        padding: 27px;
+        font-size: 1.45rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav aria-label="Основная навигация">
+        <a class="logo" href="#top">
+          <span class="logo-mark" aria-hidden="true">🍞</span>
+          <span>Домашний хлеб</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#products">Выпечка</a></li>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="hero" id="top">
+        <div>
+          <p class="eyebrow">Пекарня у дома</p>
+          <h1>Тёплый хлеб для тёплых встреч</h1>
+          <p class="hero-text">Пекарня с домашней атмосферой, где каждый день с душой пекут свежий хлеб и ароматные булочки.</p>
+          <a class="button" href="#contacts">Заглянуть к нам</a>
+        </div>
+
+        <div class="hero-art" aria-label="Свежая домашняя выпечка" role="img">
+          <span class="crumb crumb-one" aria-hidden="true"></span>
+          <span class="crumb crumb-two" aria-hidden="true"></span>
+          <span class="crumb crumb-three" aria-hidden="true"></span>
+          <div class="bread-circle" aria-hidden="true">🥖</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="products" aria-labelledby="products-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Любимые вкусы</p>
+          <h2 id="products-title">Выпечка, которую выбирают каждый день</h2>
+          <p>Готовим небольшими партиями, чтобы на вашем столе всегда было свежо, ароматно и по-домашнему.</p>
+        </div>
+
+        <ul class="products">
+          <li>
+            <article class="product-card">
+              <div class="product-icon" aria-hidden="true">🍞</div>
+              <h3>Бородинский хлеб</h3>
+              <p>Ароматный ржаной хлеб с кориандром и плотным мякишем.</p>
+            </article>
+          </li>
+          <li>
+            <article class="product-card">
+              <div class="product-icon" aria-hidden="true">🥐</div>
+              <h3>Круассан с шоколадом</h3>
+              <p>Слоёный, хрустящий и с нежной шоколадной начинкой.</p>
+            </article>
+          </li>
+          <li>
+            <article class="product-card">
+              <div class="product-icon" aria-hidden="true">🥧</div>
+              <h3>Пирожок с капустой</h3>
+              <p>Румяное тесто и сочная начинка по семейному рецепту.</p>
+            </article>
+          </li>
+          <li>
+            <article class="product-card">
+              <div class="product-icon" aria-hidden="true">🌀</div>
+              <h3>Булочка с корицей</h3>
+              <p>Мягкая сдоба, корица и сладкая глазурь для уютного утра.</p>
+            </article>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="container about-content">
+        <div class="about-quote">«Самый лучший аромат — это аромат свежего хлеба»</div>
+
+        <div class="about-text">
+          <p class="eyebrow">Наша история</p>
+          <h2 id="about-title">Как дома, только рядом</h2>
+          <p>«Домашний хлеб» — небольшая пекарня с домашней атмосферой, где каждый день с душой пекут свежий хлеб и ароматные булочки.</p>
+          <p>Мы выбираем простые натуральные ингредиенты, бережно работаем с тестом и верим, что хорошая выпечка делает день немного добрее.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts" aria-labelledby="contacts-title">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Будем рады встрече</p>
+          <h2 id="contacts-title">Заходите за свежей выпечкой</h2>
+        </div>
+
+        <div class="contact-card">
+          <address>
+            <p>
+              <strong>Телефон:</strong>
+              <a class="contact-link" href="tel:+79001234567">+7 (900) 123-45-67</a>
+            </p>
+            <p><strong>Адрес:</strong> ул. Тёплая, 12</p>
+          </address>
+
+          <a class="button" href="tel:+79001234567">Позвонить нам</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2024 «Домашний хлеб» · Испечено с душой</p>
+    </div>
+  </footer>
+</body>
+</html>
