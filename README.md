@@ -13,8 +13,10 @@ Python-скрипт, который генерирует готовую HTML-с�
 
 ## Требования
 
-- Python 3.12+
-- Ключ API от OpenAI (или совместимого провайдера)
+- Python 3.8+
+- Ключ API от ProxyAPI ([proxyapi.ru](https://proxyapi.ru))
+
+> **Провайдер:** ИИ-провайдер был сменён с `gen-api.ru` на `proxyapi.ru`, т.к. ProxyAPI предоставляет одну и ту же модель в 4 раза дешевле.
 
 ## Установка
 
@@ -34,16 +36,18 @@ pip install -r requirements.txt
 3. Настройте переменные окружения в файле `.env` (скопируйте `.env.example`):
 
 ```
-OPENAI_API_KEY=ваш_ключ
-OPENAI_BASE_URL=https://proxy.gen-api.ru/v1
-OPENAI_MODEL=gpt-5-6-luna
-TEMPERATURE=0.2
+OPENAI_API_KEY=ваш_ключ_proxyapi
+OPENAI_BASE_URL=https://api.proxyapi.ru/openai/v1
+OPENAI_MODEL=gpt-5.6-luna
+TEMPERATURE=1
 LOG_LEVEL=INFO
 ```
 
+> **Важно:** Модель `gpt-5.6-luna` через ProxyAPI не поддерживает кастомный `temperature` — используется только дефолтное значение `1`.
+
 ## Запуск
 
-### С описанием по умолчанию (тестовый пример):
+### С описанием по умолчанию (тестовый пример — пекарня):
 
 ```powershell
 python main.py
@@ -69,27 +73,35 @@ python main.py --task "Описание" --out-dir my_output
 - `analysis.json` — промежуточный анализ (для отладки)
 - `tools.json` — подобранные компоненты (для отладки)
 
+Примеры сгенерированных страниц:
+- `output/` — стоматологическая клиника «Улыбка»
+- `bakery_output/` — пекарня «Домашний хлеб»
+- `cafe_output/` — кафе
+
 ## Структура проекта
 
 ```
 vpf05-html-generator-chain/
-├── .env              # Конфигурация (API-ключ, модель)
+├── .env              # Конфигурация (API-ключ, модель, ProxyAPI)
 ├── .env.example      # Шаблон конфигурации
 ├── .gitignore
 ├── requirements.txt  # Зависимости Python
 ├── main.py           # Основной скрипт
 ├── README.md         # Этот файл
-└── output/           # Создаётся автоматически при запуске
-    ├── index.html
-    ├── analysis.json
-    └── tools.json
+├── ProgressOfWork.md # Ход работ над проектом
+├── drafts/
+│   └── prompt.txt    # Шаблон для промпта
+├── output/           # Результат запуска (стоматология)
+├── bakery_output/    # Результат запуска (пекарня)
+└── cafe_output/      # Результат запуска (кафе)
 ```
 
 ## Архитектура
 
 - `main.py` — единый файл со всей логикой
 - LangChain используется для построения цепочек (chains)
-- OpenAI-клиент подключается через совместимый API (GenAPI и другие)
+- OpenAI-клиент подключается через ProxyAPI (совместимый API, `https://api.proxyapi.ru/openai/v1`)
+- Модель `gpt-5.6-luna` — современная модель, доступная через ProxyAPI
 - Промпты написаны на русском языке
 
 ## Шаблон для промпта (для использования в других проектах)

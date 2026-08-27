@@ -42,3 +42,16 @@
 - [x] Создание `README.md`
 - [x] Создание `ProgressOfWork.md`
 - [x] Инициализация git-репозитория
+
+### 7. Миграция на ProxyAPI
+- **Смена ИИ-провайдера:** `gen-api.ru` → `proxyapi.ru`
+- Причина: ProxyAPI предоставляет ту же модель `gpt-5.6-luna` в 4 раза дешевле
+- Обновлён `OPENAI_BASE_URL` на `https://api.proxyapi.ru/openai/v1`
+- Сменена модель: `gpt-5-6-luna` → `gpt-5.6-luna` (имя модели с точкой)
+- Исправлены опечатки в `.env.example`: `OPEN_API_KEY` → `OPENAI_API_KEY`, `OPEN_BASE_URL` → `OPENAI_BASE_URL`
+- Установлен `TEMPERATURE=1` — модель `gpt-5.6-luna` через ProxyAPI не поддерживает кастомный temperature, только дефолтное значение
+- Запущен тестовый генератор для пекарни «Домашний хлеб» (`bakery_output`)
+
+### 8. Обновление документации
+- `README.md` — обновлены URL, модель, температура, добавлен блок про ProxyAPI и примеры вывода
+- `ProgressOfWork.md` — добавлен шаг 7 с описанием миграции
