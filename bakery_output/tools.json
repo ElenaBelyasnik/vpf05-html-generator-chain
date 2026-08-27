@@ -10,6 +10,7 @@
     "ul",
     "li",
     "article",
+    "img",
     "a",
     "address",
     "footer"
@@ -17,12 +18,11 @@
   "css_features": [
     "flexbox",
     "grid",
-    "background-color",
-    "color",
     "border-radius",
     "box-shadow",
-    "padding",
-    "margin",
+    "warm-color-palette",
+    "background-texture",
+    "hover-effects",
     "responsive-design"
   ],
   "fonts": [
