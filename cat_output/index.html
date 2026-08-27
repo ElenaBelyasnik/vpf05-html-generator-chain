@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Кошки делают нашу жизнь теплее и уютнее. Здесь вы найдёте милые фото, забавные факты и полезные советы для счастливой жизни с пушистым другом.">
+  <title>Муррр — мир, где кошки правят</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --peach: #fad9c1;
+      --mint: #cdefe3;
+      --cream: #fff5e1;
+      --coral: #f47c5c;
+      --brown: #6b4f45;
+      --dark: #46362f;
+      --white: #fffdf8;
+      --shadow: 0 14px 35px rgba(107, 79, 69, 0.13);
+      --soft-shadow: 0 7px 18px rgba(107, 79, 69, 0.1);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-width: 320px;
+      margin: 0;
+      color: var(--brown);
+      background:
+        radial-gradient(circle at 8% 12%, rgba(250, 217, 193, 0.65) 0 110px, transparent 111px),
+        radial-gradient(circle at 94% 42%, rgba(205, 239, 227, 0.75) 0 150px, transparent 151px),
+        var(--cream);
+      font-family: "Nunito", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        transform 0.25s ease;
+    }
+
+    a:focus-visible {
+      outline: 3px solid var(--coral);
+      outline-offset: 4px;
+      border-radius: 6px;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 24px 0 78px;
+      background:
+        linear-gradient(
+          135deg,
+          rgba(250, 217, 193, 0.96),
+          rgba(255, 245, 225, 0.92) 55%,
+          rgba(205, 239, 227, 0.9)
+        );
+      border-bottom-right-radius: 48px;
+      border-bottom-left-radius: 48px;
+      box-shadow: var(--shadow);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 70px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--brown);
+      font-family: "Quicksand", sans-serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+    }
+
+    .logo:hover {
+      color: var(--coral);
+      transform: translateY(-2px);
+    }
+
+    .logo-mark {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      color: var(--white);
+      background: var(--coral);
+      border-radius: 50% 50% 45% 45%;
+      box-shadow: var(--soft-shadow);
+      font-size: 1.4rem;
+    }
+
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    nav a:hover,
+    footer a:hover {
+      color: var(--coral);
+    }
+
+    .hero {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 7px 16px;
+      color: var(--dark);
+      background: rgba(255, 255, 255, 0.72);
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 800;
+    }
+
+    h1,
+    h2 {
+      color: var(--dark);
+      font-family: "Quicksand", sans-serif;
+      line-height: 1.15;
+    }
+
+    h1 {
+      margin: 0 0 22px;
+      font-size: clamp(2.35rem, 6vw, 4.8rem);
+      letter-spacing: -1.5px;
+    }
+
+    h1 span {
+      color: var(--coral);
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto;
+      font-size: clamp(1rem, 2vw, 1.18rem);
+    }
+
+    .paw-row {
+      margin-top: 26px;
+      color: var(--coral);
+      font-size: 1.35rem;
+      letter-spacing: 8px;
+    }
+
+    main {
+      padding: 80px 0 35px;
+    }
+
+    section {
+      margin-bottom: 90px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+    }
+
+    .section-heading p {
+      max-width: 390px;
+      margin: 0;
+      color: var(--brown);
+      text-align: right;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    figure {
+      overflow: hidden;
+      margin: 0;
+      background: var(--white);
+      border: 5px solid rgba(255, 255, 255, 0.75);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    figure:hover {
+      transform: translateY(-7px) rotate(-1deg);
+      box-shadow: 0 18px 35px rgba(107, 79, 69, 0.2);
+    }
+
+    figure:nth-child(even):hover {
+      transform: translateY(-7px) rotate(1deg);
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      height: 245px;
+      object-fit: cover;
+    }
+
+    figcaption {
+      padding: 13px 15px 16px;
+      color: var(--brown);
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .facts-section {
+      padding: 42px;
+      background: linear-gradient(135deg, var(--mint), #e9f8ed);
+      border-radius: 34px;
+      box-shadow: var(--shadow);
+    }
+
+    .facts-section .section-heading {
+      margin-bottom: 24px;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 17px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .facts li {
+      position: relative;
+      padding: 22px 22px 22px 59px;
+      color: var(--dark);
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 19px;
+      font-weight: 700;
+    }
+
+    .facts li::before {
+      position: absolute;
+      top: 19px;
+      left: 19px;
+      color: var(--coral);
+      content: "🐾";
+      font-size: 1.45rem;
+    }
+
+    .contact {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      padding: 38px 42px;
+      background: linear-gradient(120deg, var(--peach), #ffe9d8);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact h2 {
+      margin-bottom: 8px;
+    }
+
+    .contact-text {
+      max-width: 520px;
+    }
+
+    .contact-text p {
+      margin-bottom: 0;
+    }
+
+    address {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 12px;
+      font-style: normal;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 18px;
+      color: var(--white);
+      background: var(--brown);
+      border-radius: 999px;
+      box-shadow: 0 6px 12px rgba(107, 79, 69, 0.22);
+      font-weight: 800;
+    }
+
+    .contact-link:hover {
+      color: var(--dark);
+      background: var(--coral);
+      transform: translateY(-3px);
+    }
+
+    footer {
+      padding: 28px 0 34px;
+      color: var(--brown);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    footer a {
+      color: var(--brown);
+      font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+      header {
+        padding-bottom: 58px;
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 55px;
+      }
+
+      nav ul {
+        gap: 12px 18px;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section-heading p {
+        text-align: left;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .facts-section {
+        padding: 28px 20px;
+      }
+
+      .contact {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 30px 24px;
+      }
+
+      address {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        width: min(100% - 28px, 1100px);
+      }
+
+      main {
+        padding-top: 55px;
+      }
+
+      section {
+        margin-bottom: 65px;
+      }
+
+      .gallery,
+      .facts {
+        grid-template-columns: 1fr;
+      }
+
+      figure img {
+        height: 260px;
+      }
+
+      .contact-link {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="home">
+    <div class="container">
+      <nav aria-label="Основная навигация">
+        <a class="logo" href="#home">
+          <span class="logo-mark" aria-hidden="true">🐱</span>
+          <span>Муррр</span>
+        </a>
+
+        <ul>
+          <li><a href="#gallery">Галерея</a></li>
+          <li><a href="#facts">Факты</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+
+      <div class="hero">
+        <div class="eyebrow">Место, где правят пушистые лапки</div>
+        <h1>Муррр <span>— мир, где кошки правят</span></h1>
+        <p>
+          Кошки делают нашу жизнь теплее и уютнее. Здесь вы найдёте милые фото,
+          забавные факты и полезные советы для счастливой жизни с пушистым другом.
+        </p>
+        <div class="paw-row" aria-hidden="true">🐾 🐾 🐾</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="gallery" aria-labelledby="gallery-title">
+      <div class="section-heading">
+        <h2 id="gallery-title">Галерея мурчания</h2>
+        <p>Немного пушистого вдохновения для хорошего настроения каждый день.</p>
+      </div>
+
+      <div class="gallery">
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?auto=format&fit=crop&w=900&q=85"
+            alt="Полосатая кошка смотрит в камеру"
+            loading="lazy"
+          >
+          <figcaption>Взгляд, полный любопытства</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?auto=format&fit=crop&w=900&q=85"
+            alt="Рыжий котёнок на мягком пледе"
+            loading="lazy"
+          >
+          <figcaption>Рыжий комочек счастья</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1573865526739-10659fec78a5?auto=format&fit=crop&w=900&q=85"
+            alt="Белая кошка с разными глазами"
+            loading="lazy"
+          >
+          <figcaption>Красота в каждой детали</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1495360010541-f48722b34f7d?auto=format&fit=crop&w=900&q=85"
+            alt="Чёрная кошка на светлом фоне"
+            loading="lazy"
+          >
+          <figcaption>Таинственная чёрная лапка</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?auto=format&fit=crop&w=900&q=85"
+            alt="Кошка с большими глазами"
+            loading="lazy"
+          >
+          <figcaption>Большие глаза, большие планы</figcaption>
+        </figure>
+
+        <figure>
+          <img
+            src="https://images.unsplash.com/photo-1533738363-b7f9aef128ce?auto=format&fit=crop&w=900&q=85"
+            alt="Кошка в солнечном свете"
+            loading="lazy"
+          >
+          <figcaption>Солнечное настроение</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="facts" class="facts-section" aria-labelledby="facts-title">
+      <div class="section-heading">
+        <h2 id="facts-title">Усатые факты</h2>
+        <p>Кошки умеют удивлять — даже когда просто сладко спят.</p>
+      </div>
+
+      <ul class="facts">
+        <li>Кошки мурлыкают на частоте, которая может помогать заживлению костей.</li>
+        <li>У кошек 32 мышцы в каждом ухе.</li>
+        <li>Кошки проводят во сне около 12–16 часов в сутки.</li>
+      </ul>
+    </section>
+
+    <section id="contacts" class="contact" aria-labelledby="contacts-title">
+      <div class="contact-text">
+        <h2 id="contacts-title">Давайте мурчать вместе</h2>
+        <p>Есть история о вашем любимце или просто хочется поделиться улыбкой? Пишите нам!</p>
+      </div>
+
+      <address>
+        <a class="contact-link" href="mailto:hello@murr-cat.example">
+          <span aria-hidden="true">✉️</span>
+          <span>hello@murr-cat.example</span>
+        </a>
+        <a
+          class="contact-link"
+          href="https://t.me/murr_cat"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span aria-hidden="true">🐾</span>
+          <span>Telegram</span>
+        </a>
+      </address>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Сделано с любовью, тёплым пледом и щепоткой мурчания 🐾
+      <br>
+      <a href="#home">Вернуться наверх</a>
+    </div>
+  </footer>
+</body>
+</html>
